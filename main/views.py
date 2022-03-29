@@ -51,23 +51,22 @@ class home(TemplateView):
         #add the map to the the folium map
         map_id_dict = ee.Image(modisndvi).getMapId(vis_paramsNDVI)
        
-        #GEE raster data to TileLayer
-        folium.raster_layers.TileLayer(
-                    tiles = map_id_dict['tile_fetcher'].url_format,
-                    attr = 'Google Earth Engine',
-                    name = 'NDVI',
-                    overlay = False,
-                    control = True
-                    ).add_to(m)
 
-        folium.CircleMarker(
-		location=[34.284985,48.8170867],
-		radius=150,
-		popup="Laurelhurst Park",
-		color="#1fc219",
-		fill=True,
-		fill_color="#1fc219",
-		).add_to(m)
+
+        # folium.CircleMarker(
+		# location=[34.284985,48.8170867],
+		# radius=20,
+		# popup="Laurelhurst Park",
+		# color="#1fc219",
+		# fill=True,
+		# fill_color="#1fc219",
+		# ).add_to(m)
+
+        folium.Marker(
+            location=[34.28223887918144, 48.81481903815655],
+            popup="Im Here",
+            icon=folium.Icon(icon="cloud"),
+        ).add_to(m)
 
         #add Layer control
         m.add_child(folium.LayerControl())
